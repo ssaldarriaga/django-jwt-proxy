@@ -1,0 +1,9 @@
+version: "2"
+services:
+  http-proxy:
+    container_name: http-proxy
+    image: python-proxy
+    ports:
+      - "${HTTP_PORT}:${HTTP_PORT}"
+    environment:
+      - HTTP_PORT=${HTTP_PORT}
