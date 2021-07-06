@@ -12,7 +12,7 @@ class RequestProxy():
 
     async def post(self, data: dict) -> Response:
         path = self._get_path()
-        headers = self._get_headers(data.get("name"))
+        headers = self._get_headers(data.get("name", "python-proxy"))
         async with httpx.AsyncClient() as client:
             response = await client.post("{base}{path}".format(base=TARGET_BASE_URL_API, path=path), data=data, headers=headers)
 

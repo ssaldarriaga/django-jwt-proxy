@@ -9,23 +9,6 @@ from app.settings import TARGET_BASE_URL_API, JWT_HEADER
 
 client = TestClient(app)
 
-@pytest.mark.describe("/api/users - Request body validation")
-def test_should_returns_422_when_body_is_empty():
-    response = client.post("/api/users")
-    assert response.status_code == 422
-
-@pytest.mark.describe("/api/users - Request body validation")
-def test_should_returns_400_when_username_is_empty():
-    response = client.post("/api/users", json={"name": "", "job": "fake-job"})
-    assert response.status_code == 400
-    assert response.json()["detail"] == "The username can not be empty"
-
-@pytest.mark.describe("/api/users - Request body validation")
-def test_should_returns_400_when_job_is_empty():
-    response = client.post("/api/users", json={"name": "fake-username", "job": ""})
-    assert response.status_code == 400
-    assert response.json()["detail"] == "The job can not be empty"
-
 @pytest.mark.describe("/api/users - Request to target API")
 def test_should_create_a_user_successfully(httpx_mock: HTTPXMock):
     url = "{base}/api/users".format(base=TARGET_BASE_URL_API)

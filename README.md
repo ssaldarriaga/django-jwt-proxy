@@ -35,9 +35,10 @@ http-proxy    | INFO:     Application startup complete.
 Note: You can use the `HTTP_PORT` environment variable to modify the port.
 
 ### Available endpoints:
-- [POST] `/api/users`:
-    * **Body**: `{"name": "username", "job": "some job description"}`
+- [POST] `/api/<users-path>`:
 - [GET] `/status`
+
+The body expected data is available on [REQ | RES](https://reqres.in/)
 
 **Example**
 ```bash
